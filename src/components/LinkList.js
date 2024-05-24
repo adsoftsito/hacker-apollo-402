@@ -9,6 +9,14 @@ const FEED_QUERY = gql`
         id
         url
         description
+        votes {
+          id  
+        }
+        
+        postedBy {
+          username
+        } 
+
       }
  
   }
@@ -23,8 +31,8 @@ const LinkList = () => {
     <div>
     {data && (
       <>
-        {data.links.map((link) => (
-          <Link key={link.id} link={link} />
+        {data.links.map((link, index) => (
+          <Link key={link.id} link={link} index={index} />
         ))}
       </>
      )}
